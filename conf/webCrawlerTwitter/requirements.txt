@@ -1,0 +1,4 @@
+tweepy
+pymongo
+mysql-connector-python
+

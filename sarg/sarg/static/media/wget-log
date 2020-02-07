@@ -1,0 +1,12 @@
+--2020-02-05 20:29:11--  https://www.google.com/url?sa=i
+Resolvendo www.google.com (www.google.com)... 2800:3f0:4001:80b::2004, 216.239.36.117, 216.239.34.117, ...
+Conectando-se a www.google.com (www.google.com)|2800:3f0:4001:80b::2004|:443... falhou: Operation timed out.
+Conectando-se a www.google.com (www.google.com)|216.239.36.117|:443... conectado.
+A requisição HTTP foi enviada, aguardando resposta... 200 OK
+Tamanho: não especificada [text/html]
+Salvando em: “url?sa=i”
+
+url?sa=i                                    [<=>                                                                           ]       0  --.-KB/s               url?sa=i                                    [ <=>                                                                          ]   1,41K  --.-KB/s    em 0s      
+
+2020-02-05 20:30:29 (7,35 MB/s) - “url?sa=i” salvo [1442]
+

@@ -1,4 +1,4 @@
 tweepy
 pymongo
 mysql-connector-python
-
+python-dateutil

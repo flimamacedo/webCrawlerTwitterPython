@@ -87,81 +87,9 @@ p {
          <div class="">
             <!-- top tiles -->
 
-                     
-            <div class="row top_tiles">   
-               <div class="col-sm-2 col-xs-12">
-                  <div class="tile-stats tile-stats-home">
-                     <a href="/painel_bugs/bugs">
-                        <div class="icon"><i class="fa fa-bug"></i></div>
-                        <div class="count">{{QUANTIDADE_FALHAS_EM_ABERTO}}</div>
-                        <h3>Bugs</h3>
-                        <p>+ detalhes</p>
-                     </a>
-                  </div>
-               </div>
-               <div class="col-sm-2 col-xs-12">
-                  <div class="tile-stats tile-stats-home">
-                     <a href="/painel_demandas/demandas">
-                        <div class="icon"><i class="fa fa-wrench "></i></div>
-                        <div class="count">{{amount_demandas}}</div>
-                        <h3>Demandas</h3>
-                        <p>+ detalhes</p>
-                     </a>
-                  </div>
-               </div>
-               <div class="col-sm-2 col-xs-12">
-                  <div class="tile-stats tile-stats-home">
-                     <a href="/painel_gmuds/gmuds">
-                        <div class="icon"><i class="fa fa-cogs"></i></div>
-                        <div class="count">{{ amount_gmuds }}</div>
-                        <h3>GMUDs</h3>
-                        <p>+ detalhes</p>
-                     </a>
-                  </div>
-               </div>
-               <div class="col-sm-2 col-xs-12">
-                  <div class="tile-stats tile-stats-home">
-                     <a href="/painel_incidentes/incidentes">
-                        {% if QUANTIDADE_OCORRENCIAS_EM_ABERTO <= 50  %}
-                        <div class="icon"><font color='#1ABB9C'><i class="fa fa-check-circle"></i></font></div>
-                        <div class="count">{{ QUANTIDADE_OCORRENCIAS_EM_ABERTO }}</div>
-                        {% endif %}	
-                        {% if QUANTIDADE_OCORRENCIAS_EM_ABERTO > 50  %}
-                        <div class="icon"><font color='#d9534f'><i class="fa fa-times-circle"></i></font></div>
-                        <div class="count">{{ QUANTIDADE_OCORRENCIAS_EM_ABERTO }}</div>
-                        {% endif %}				
-                        <h3>Incidentes</h3>
-                        <p>+ detalhes</p>			
-                     </a>
-                  </div>
-               </div>
-               <div class="col-sm-2 col-xs-12">
-                  <div class="tile-stats tile-stats-home">
-                     <a href="/painel_oportunidades/oportunidades">
-                        <div class="icon"><i class="fa fa-rocket"></i></div>
-                        <div class="count">{{ amount_oportunidades }}</div>
-                        <h3>Oportunidades</h3>
-                        <p>+ detalhes</p>
-                     </a>
-                  </div>
-               </div>
-               <div class="col-sm-2 col-xs-12">
-                  <div class="tile-stats tile-stats-home">
-                     <a href="/painel_projetos/projetos">
-                        <div class="icon"><i class="fa fa-object-group"></i></div>
-                        <div class="count">{{ amount_projetos }}</div>
-                        <h3>Projetos</h3>
-                        <p>+ detalhes</p>
-                     </a>
-                  </div>
-               </div>
-            </div>			
-			
-		
-
             <div class="row">
                <div class="hidden-xs col-sm-12">
-                  <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="15000" style="border-radius: 5px;overflow:hidden;">
+                  <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000" style="border-radius: 5px;overflow:hidden;">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
                      {% for value in imagens %}
@@ -176,7 +104,7 @@ p {
                       <div class="
                       {% if forloop.first %}
                           active 
-                      {% endif %} item" style="background:url(/static/{{ value.imagem }}) center center no-repeat;background-size: cover;">	
+                      {% endif %} item" style="background:url(/media/{{ value.imagem }}) center center no-repeat;background-size: cover;">	
                         <img style="height: 450px !important; width: 100% !important;">
                         <div class="carousel-caption">				
                           <h2> {{ value.titulo }} </h2>

@@ -2,18 +2,6 @@ version: '3'
 
 services:
 
-  mongo:
-    image: mongo
-    container_name: mongoDb
-    restart: always
-    ports:
-      - 27017:27017
-    networks:
-      - production-network
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
-
   webcrawlertwitter:
     build:
       context: .
@@ -24,21 +12,7 @@ services:
     networks:
       - production-network
     depends_on:
-      - mongo
-
-  mongoExpress:
-    image: mongo-express
-    container_name: mongoExpress
-    restart: always
-    ports:
-      - 8081:8081
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: root
-    networks:
-      - production-network
-    depends_on:
-      - mongo
+      - db
 
   db:
         image: mysql:5.7
@@ -47,7 +21,6 @@ services:
         container_name: mysql
         volumes:
                 - ./db_data:/var/lib/mysql
-                - ./scripts/mysql/generateTablesViewsSarg.sql:/tmp/generateTablesViewsSarg.sql
         environment:
                 MYSQL_ROOT_PASSWORD: root
                 MYSQL_DATABASE: sarg
@@ -81,14 +54,36 @@ services:
         container_name: nginx
         volumes:
                 - ./sarg:/sarg
+                - ./logs_nginx:/var/log/nginx
                 - ./conf/nginx/etc/nginx/conf.d:/etc/nginx/conf.d
                 - ./sarg/sarg/static:/static
         ports:
                 - "80:80"
         networks:
                 - production-network
+        restart: always
         depends_on:
                 - web
+                  #  logstash:
+                  #        build:
+                  #                context: .
+                  #                dockerfile: ./docker-imgs/logstash.dockerfile
+                  #        container_name: logstash
+                  #        volumes:
+                  #                - ./conf/logstash/conf/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+                  #                - ./conf/logstash/conf/pipelines.yml:/usr/share/logstash/config/pipelines.yml:ro
+                  #                - ./conf/logstash/pipeline:/usr/share/logstash/pipeline:ro
+                  #                - ./conf/logstash/driver/sqljdbc_6.0/enu/jre8:/etc/logstash/driver/sqljdbc_6.0/enu/jre8
+                  #                - ./conf/logstash/driver/mysql-connector-java-5.1.36:/etc/logstash/driver/mysql-connector-java-5.1.36
+                  #                - ./logstash_data:/log
+                  #        ports:
+                  #                - "5000:5000"
+                  #        environment:
+                  #                LS_JAVA_OPTS: "-Xmx1024m -Xms1024m"
+                  #        networks:
+                  #                - production-network
+                  #        depends_on:
+                  #                - db                  
 networks:                
         production-network:
                 driver: bridge

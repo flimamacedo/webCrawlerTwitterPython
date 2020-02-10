@@ -8,7 +8,7 @@ urlpatterns = [
     path('login_user/', views.login_user, name='login_user'),
     path('logout_user/', views.logout_user, name='logout_user'),
     path('register/', views.register, name='register'),
-# Reet password
+# Reset password
 #    path('resetpassword/passwordsent/', 'auth.views.password_reset_done'),
 #    path('resetpassword/', 'auth.views.password_reset'),
 #    path('reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/', 'auth.views.password_reset_confirm'),

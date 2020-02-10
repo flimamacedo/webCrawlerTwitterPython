@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<style>
+[style*="--aspect-ratio"] > :first-child {
+  width: 100%;
+}
+[style*="--aspect-ratio"] > img {
+  height: auto;
+}
+@supports (--custom:property) {
+  [style*="--aspect-ratio"] {
+    position: relative;
+  }
+  [style*="--aspect-ratio"]::before {
+    content: "";
+    display: block;
+    padding-bottom: calc(100% / (var(--aspect-ratio)));
+  }
+  [style*="--aspect-ratio"] > :first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+}
+</style>
+<html lang="pt-br">
+   <head>
+      {% include "sarg/include/header.html" %}
+      <title>Monitorações | SARG | Sistema de Análise e Relatórios de Gestão</title>
+      <style>
+      </style>
+   </head>
+   <body class="nav-md">
+      <div class="container body">
+         <div class="main_container">
+            {% include "sarg/include/left.html" %}
+         </div>
+      </div>
+      <!-- top navigation -->
+      {% include "sarg/include/top_navegation.html" %}
+      <!-- /top navigation -->
+      <!-- page content -->
+      <div class="right_col" role="main">
+         <!-- top tiles -->
+         <div class="row">
+            <div class="col-xs-12 col-sm-6">
+               <h1>Statistics API Consumers</h1>
+            </div>
+            <div class="col-xs-12 col-sm-6" style="text-align: right;">
+               <h6>Última atualização: {{data}}hrs</h6>
+               <h6>Fonte: Nginx by Filebeat and ElastichSearch</h6>
+            </div>
+         </div>
+         <!-- /top tiles -->
+         <div class="col-xs-12">
+            <div class="x_panel">
+               <div class="x_title">
+                  <ul class="nav navbar-right panel_toolbox">
+                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                     </li>
+                     <li><a class="close-link"><i class="fa fa-close"></i></a>
+                     </li>
+                  </ul>
+                  <div class="clearfix"></div>
+               </div>
+               <div class="x_content">
+                  <div>
+			
+<div style="--aspect-ratio: 16/9;">
+  <iframe 
+    src="http://caseitau.fastsolutionsoncloud.com.br:5601/app/kibana#/dashboard/55a9e6e0-a29e-11e7-928f-5dbe6f6f5519?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15w%2Cto%3Anow))"
+    width="1600"
+    height="900"
+    frameborder="0"
+  >
+  </iframe>
+</div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- /page content -->
+      <!-- footer content -->
+      {% include "sarg/include/footer.html" %}
+      <!-- /footer content -->
+      <!-- scripts content -->
+      {% include "sarg/include/scripts.html" %}
+
+      <script>
+         Highcharts.chart('container', {
+             chart: {
+                 type: 'column'
+             },
+             title: {
+                 text: 'Demandas e Melhorias'
+             },
+             xAxis: {
+                 categories: ['Gestão de Financeira', 'Detraf', 'Cobilling', 'Organon', 'Conector', 'Máquina de Batimento']
+             },
+             yAxis: {
+                 min: 0,
+                 title: {
+                     text: 'Quantidades'
+                 },
+                 stackLabels: {
+                     enabled: true,
+                     style: {
+                         fontWeight: 'bold',
+         				fontSize: '11px',
+                         color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+                     }
+                 }
+             },
+             legend: {
+                 align: 'right',
+                 x: -30,
+                 verticalAlign: 'top',
+                 y: 25,
+                 floating: true,
+                 backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+                 borderColor: '#CCC',
+                 borderWidth: 1,
+                 shadow: false
+             },
+             tooltip: {
+                 headerFormat: '<b>{point.x}</b><br/>',
+                 pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+             },
+             plotOptions: {
+                 column: {
+                     stacking: 'normal',
+                     dataLabels: {
+                         enabled: true,
+                         color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                     }
+                 }
+             },
+             series: [{
+                 name: 'Internos', 
+         		color: '#73879C',
+                 data: [3, 7, 8, null, null, 1]
+             }, {
+                 name: 'Externos',
+         		color: '#1ABB9C',
+                 data: [22, 15, 9, 11, 4, null]
+             }]
+         });
+      </script>
+      <!-- /scripts content -->
+   </body>
+</html>
+

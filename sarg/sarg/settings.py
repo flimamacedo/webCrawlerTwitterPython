@@ -28,7 +28,7 @@ SECRET_KEY = get_random_string(50, chars)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['web']
+ALLOWED_HOSTS = ['caseitau.fastsolutionsoncloud.com.br', 'web', '127.0.0.1']
 
 # Application definition
 
@@ -41,21 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'login',
-    'painel_bugs',
-    'painel_demandas',
-    'painel_incidentes',
-    'painel_orcamentos',
-    'painel_oportunidades',
     'painel_monitoracoes',
-    'painel_gmuds',
-    'painel_rateio_horas',
-    'painel_projetos',
-    'painel_ongoing',
-    'clientes',
-    'cadastro_financeiro',
-    'painel_horas_gns',
-    'receitas_extras_ongoing',
-    'funcionarios',
+    'painel_apistatus',
+    'painel_tweets',
+    'apiRest',
+    'rest_framework',
 ]
 
 
@@ -103,13 +93,6 @@ DATABASES = {
         'NAME': 'sarg',
         'HOST': 'db',
     },
- # PEDENTE MIGRAR INFORMACOES PAINEL_ORCAMENTOS PORCENTAGEM
-   'monitorcs': {
-	'ENGINE': 'django.db.backends.oracle',
-        'USER': 'monitorcs',
-        'PASSWORD': 'monitorcs',
-	'NAME': '(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = 10.100.104.105)(PORT = 1521))(CONNECT_DATA =(SERVICE_NAME = compp)))',
-    },
 }
 
 
@@ -147,11 +130,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+#STATIC_URL = '/static/'
+#STATIC_ROOT = '/static'
 
+STATIC_ROOT = '/sarg/sarg/static/'
 STATIC_URL = '/static/'
-STATIC_ROOT = '/static'
 
 MEDIA_ROOT = '/media/'
 MEDIA_URL = '/media/' 
 
 USE_THOUSAND_SEPARATOR = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}

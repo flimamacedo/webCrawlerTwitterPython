@@ -1,6 +1,13 @@
 # Web Crawler Twitter
 
-<h2>a. Documentação do projeto</h2>
+<h2>URLS</h2> 
+API: http://caseitau.fastsolutionsoncloud.com.br/apiRest/tweets/
+SARG: http://caseitau.fastsolutionsoncloud.com.br/apiRest/tweets/
+Kibana: http://caseitau.fastsolutionsoncloud.com.br:5601
+
+<h2>Autênticação:</h2> 
+SARG: admin/admin
+Kibana: elastic/changeme
 
 ![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/planodetrabalho.png)
 

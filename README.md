@@ -14,6 +14,8 @@
 
 </ul>
 
+<h2>b. Plano de Trabalho</h2>
+
 ![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/planodetrabalho.png)
 
 <h2>b. Documentação das APIs</h2>

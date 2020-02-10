@@ -1,60 +1,50 @@
-# SARG
-Sistema de Análise e Relatórios de Gestão
+# Web Crawler Twitter
 
-SARG is opensource software.
+<h2>a. Documentação do projeto</h2>
 
-http://sarg.readthedocs.io for latest documentation
+![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/planodetrabalho.png)
 
-This project contains the following modules.
+<h2>b. Documentação das APIs</h2>
+
+![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/api2.png)
+![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/api1.png)
+
+<h2>c. Documentação de arquitetura</h2>
+
+<h2>d. Como subir uma cópia deste ambiente localmente</h2>
+
+<h3>Installation - Requirements</h3>
 
 <ul>
-  <li>login</li>
-  <li>Twitters</li>
+  <li>Access API Twitter</li>
+  <li>docker</li>
+  <li>docker-compose</li>
+  <li>filebeat</li>
 </ul>
 
-<h2>Installation - Requirements</h2>
+```
+git clone https://github.com/flimamacedo/webCrawlerTwitterPython.git
+cd webCrawlerTwitterPython
+docker-compose build
+docker-compose up -d
+yum install filebeat
+```
+/etc/filebeat/filebeat.yml :
 
-<h3>Docker containers/versions:</h3>
+```
+paths:
+    - /logs_nginx/*.log
+setup.kibana:
+  host: "localhost:5601"
+output.elasticsearch:
+  hosts: ["localhost:9200"]
+  username: "elastic"
+  password: "changeme"  
+```
+```
+/bin/systemctl start filebeat
+```
+<h2>e. Prints dos Logs(item 8) e os 3 Dashboards(item 9)</h2>
 
-<ul>
-  <li>python:3.7.0</li>
-  <li>mysqld 5.7</li>
-  <li>nginx:1.15.2</li>
-   <li>mongo-db:4.2.3</li>
-   <li>mongo-express:N/A</li>
-</ul>
-
-<h3>Python (pip) packages/versions requirements:</h3>
-
-<ul>  
-  <li>django==2.1.0</li>
-  <li>gunicorn==19.9.0</li>
-  <li>mysqlclient==1.3.13</li>
-  <li>Pillow==5.2.0</li>
-  <li>tweepy==Latest</li>  
-  <li>pymongo==Latest</li>  
-  <li>mysql-connector-python==Latest</li>
-</ul>
-
-<h2>Creating Tables, Views and Functions for SARG</h2>
-
-<pre>
-sudo docker exec -it mysql bash
-mysql -uroot -p sarg < /tmp/generateTablesViewsSarg.sql
-Enter password:
-root@bb77ac860c80:/#
-</pre>
-
-
-<h2>Creating Super User Django Admin</h2>
-
-<pre>
-sudo docker exec -it sarg sh
-python manage.py createsuperuser 
-</pre>
-
-<h2>Creating Tables, Views and Functions on Mysql</h2>
-<pre>
-sudo docker exec -it sarg sh
-python manage.py createsuperuser 
-</pre>
+![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/dash1.png)
+![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/dash2.png)

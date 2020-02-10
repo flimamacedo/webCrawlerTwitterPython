@@ -2,7 +2,7 @@
 
 <h2>URLS</h2> 
 <ul>
-  <li>Api REST: http://caseitau.fastsolutionsoncloud.com.br/apiRest/tweets/</li>
+  <li>API REST: http://caseitau.fastsolutionsoncloud.com.br/apiRest/tweets/</li>
   <li>SARG: http://caseitau.fastsolutionsoncloud.com.br</li>
   <li>Kibana: http://caseitau.fastsolutionsoncloud.com.br:5601</li>
 </ul>

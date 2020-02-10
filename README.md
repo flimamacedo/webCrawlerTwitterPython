@@ -14,7 +14,7 @@
 
 </ul>
 
-<h2>b. Plano de Trabalho</h2>
+<h2>a. Plano de Trabalho</h2>
 
 ![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/planodetrabalho.png)
 

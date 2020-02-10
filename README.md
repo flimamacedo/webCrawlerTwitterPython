@@ -14,8 +14,6 @@
 
 </ul>
 
-
-
 ![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/planodetrabalho.png)
 
 <h2>b. Documentação das APIs</h2>
@@ -24,6 +22,9 @@
 ![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/api1.png)
 
 <h2>c. Documentação de arquitetura</h2>
+
+Obs.:V1
+![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/image005.png)
 
 <h2>d. Como subir uma cópia deste ambiente localmente</h2>
 

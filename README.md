@@ -57,7 +57,7 @@ Based on the official Docker images:
 
 * Access to API Twitter - https://developer.twitter.com/en/docs
 
-> :information_source: TTwitter sometimes takes a long time to send access keys
+> :information_source: Twitter sometimes takes a long time to send access keys
 
 #### Host setup
 

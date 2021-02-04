@@ -14,13 +14,13 @@
 
 ## a. Work Plan
 
-![Work Plan](https://github.com/flimamacedo/webCrawlerTwitterPython/blob/master/workPlan.PNG)
+![Work Plan](https://github.com/flimamacedo/webCrawlerTwitterPython/blob/master/imgs/workPlan.PNG)
 
 
 ## b. APIs Documentation 
 
-![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/api2.png)
-![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/api1.png)
+![Image description](https://github.com/flimamacedo/webCrawlerTwitterPython/blob/master/imgs/api2.PNG)
+![Image description](https://github.com/flimamacedo/webCrawlerTwitterPython/blob/master/imgs/api1.PNG)
 
 ## c. Archiecture Documentation
 
@@ -126,5 +126,5 @@ Give webcrawlertwitter about a minute to initialize, then access the SARG web UI
 
 ## e. Logs prints(item 8) and three Dashboards(item 9)
 
-![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/dash1.png)
-![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/dash2.png)
+![Image description](https://github.com/flimamacedo/webCrawlerTwitterPython/blob/master/imgs/dash1.png)
+![Image description](https://github.com/flimamacedo/webCrawlerTwitterPython/blob/master/imgs/dash2.png)

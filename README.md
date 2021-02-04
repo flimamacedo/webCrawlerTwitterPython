@@ -1,67 +1,130 @@
-# Web Crawler Twitter
+##  Web Crawler Twitter on Docker
+##  URLs
 
-<h2>URLS</h2> 
-<ul>
-  <li>API REST: http://caseitau.fastsolutionsoncloud.com.br/apiRest/tweets/</li>
-  <li>SARG: http://caseitau.fastsolutionsoncloud.com.br</li>
-  <li>Kibana: http://caseitau.fastsolutionsoncloud.com.br:5601</li>
-</ul>
+* API REST: http://caseitau.fastsolutionsoncloud.com.br/apiRest/tweets/</li>
+* SARG: http://caseitau.fastsolutionsoncloud.com.br</li>
+* Kibana: http://caseitau.fastsolutionsoncloud.com.br:5601</li>
 
-<h2>Autênticação:</h2> 
-<ul>
-  <li>SARG: admin/admin</li>
-  <li>Kibana: elastic/changeme</li>
 
-</ul>
+##  Authentication
 
-<h2>a. Plano de Trabalho</h2>
+* SARG: admin/admin
+* Kibana: elastic/changeme
+
+
+## a. Work Plan
 
 ![Image description](https://1drv.ms/u/s!AgIjL0PiVTRiwh3jtaGesczPSoqK?e=APVqN1)
 
-<h2>b. Documentação das APIs</h2>
+## b. APIs Documentation 
 
 ![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/api2.png)
 ![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/api1.png)
 
-<h2>c. Documentação de arquitetura</h2>
+## c. Archiecture Documentation
 
 Obs.:V1
 ![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/image005.png)
 
-<h2>d. Como subir uma cópia deste ambiente localmente</h2>
+## d. Steps to run this project locally</h2>
 
-<h3>Installation - Requirements</h3>
+Based on the official Docker images:
 
-<ul>
-  <li>Access API Twitter</li>
-  <li>docker</li>
-  <li>docker-compose</li>
-  <li>filebeat</li>
-</ul>
+* [Nginx](https://hub.docker.com/_/nginx)
+* [MySQL](https://hub.docker.com/_/mysql)
+* [Python](https://hub.docker.com/_/python)
 
-```
-git clone https://github.com/flimamacedo/webCrawlerTwitterPython.git
-cd webCrawlerTwitterPython
-docker-compose build
-docker-compose up -d
-yum install filebeat
-```
-/etc/filebeat/filebeat.yml :
 
+### Contents
+
+1. [Requirements](#requirements)
+   * [Twitter](#twitter)
+   * [Host setup](#host-setup)
+   * [Packages installed localy on host](#packages-installed-localy-on-host)
+   * [Python Libraries](#python-libraries)   
+   
+2. [Usage](#usage)
+   * [Bringing up the stack](#bringing-up-the-stack)
+   * [Cleanup](#cleanup)
+   * [Initial setup](#initial-setup)
+     * [Setting up user SARG Admin](#setting-up-user-sarg-admin)
+     * [Injecting data](#injecting-data)
+
+### Requirements
+
+#### Twitter
+
+* Access to API Twitter - https://developer.twitter.com/en/docs
+
+> :information_source: TTwitter sometimes takes a long time to send access keys
+
+#### Host setup
+
+* [Docker Engine](https://docs.docker.com/install/) 
+* [Docker Compose](https://docs.docker.com/compose/install/)
+* 2 Gi of RAM
+* 2 vCPUs 
+
+By default, the stack exposes the following ports:
+* 3306: Mysql TCP
+* 80: SARG HTTP
+* 80: Nginx HTTP
+
+#### Packages installed localy on host
+
+* filebeat
+
+#### Python Libraries
+
+* tweepy
+* pymongo
+* mysql-connector-python
+* python-dateutil
+
+### Usage
+
+#### Bringing up the stack
+
+Clone this repository onto the Docker host that will run the stack, then start services locally using Docker Compose:
+
+```console
+$ git clone https://github.com/flimamacedo/webCrawlerTwitterPython.git
+$ cd webCrawlerTwitterPython
+$ docker-compose build
+$ docker-compose up
 ```
-paths:
-    - /logs_nginx/*.log
-setup.kibana:
-  host: "localhost:5601"
-output.elasticsearch:
-  hosts: ["localhost:9200"]
-  username: "elastic"
-  password: "changeme"  
+You can also run all services in the background (detached mode) by adding the `-d` flag to the above command.
+
+> :information_source: You must run `docker-compose build` first whenever you switch branch or update a base image.
+
+If you are starting the stack for the very first time, please read the section below attentively.
+
+#### Cleanup
+
+MySQL data is persisted inside a volume by default.
+
+In order to entirely shutdown the stack and remove all persisted data, use the following Docker Compose command:
+
+```console
+$ docker-compose down -v
 ```
+
+### Initial setup
+
+#### Setting up user SARG Admin
+
+```console
+$ sudo docker exec -it sarg sh
+python manage.py createsuperuser 
 ```
-/bin/systemctl start filebeat
-```
-<h2>e. Prints dos Logs(item 8) e os 3 Dashboards(item 9)</h2>
+
+#### Injecting data
+
+Give webcrawlertwitter about a minute to initialize, then access the SARG web UI by hitting
+[http://localhost](http://localhost) with a web browser and use the credentials created previusly  to log in:
+
+
+## e. Logs prints(item 8) and three Dashboards(item 9)
 
 ![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/dash1.png)
 ![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/dash2.png)

@@ -12,6 +12,4 @@ class Tweets(models.Model):
    retweet_count = models.IntegerField()
    location = models.CharField(max_length = 100, blank=True, null=True)  
    place = models.CharField(max_length = 100, blank=True, null=True)   
-#   class Meta:
-       #managed = False
-#       db_table = 'Twitters'
+

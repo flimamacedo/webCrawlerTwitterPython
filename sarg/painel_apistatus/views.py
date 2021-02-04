@@ -23,5 +23,14 @@ def ShowEndpoints(request):
             'data': data,
         })
 
+@login_required(login_url='/login')
+def ShowTweets(request):
+    from datetime import datetime
+    data = datetime.now()
+    return render(request, 'painel_apistatus/tweets.html',
+        {
+            'data': data,
+        })
+
 
         

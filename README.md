@@ -14,7 +14,8 @@
 
 ## a. Work Plan
 
-![Image description](https://1drv.ms/u/s!AgIjL0PiVTRiwh3jtaGesczPSoqK?e=APVqN1)
+![Work Plan](https://github.com/flimamacedo/webCrawlerTwitterPython/blob/master/workPlan.PNG)
+
 
 ## b. APIs Documentation 
 

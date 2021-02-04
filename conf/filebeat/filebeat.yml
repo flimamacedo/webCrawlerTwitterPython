@@ -1,0 +1,25 @@
+filebeat.config:
+  modules:
+    path: ${path.config}/modules.d/*.yml
+    reload.enabled: false
+
+#filebeat.autodiscover:
+#  providers:
+#    - type: docker
+#      hints.enabled: true
+
+processors:
+- add_cloud_metadata: ~
+
+paths:
+    - /logs_nginx/*.log
+setup.kibana:
+  host: "caseitau.fastsolutionsoncloud.com.br:5601"
+output.elasticsearch:
+  hosts: ["caseitau.fastsolutionsoncloud.com.br:9200"]
+  username: "elastic"
+  password: "changeme"
+
+
+
+ 

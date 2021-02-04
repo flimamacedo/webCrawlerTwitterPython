@@ -20,7 +20,8 @@
 ## b. APIs Documentation 
 
 ![Image description](https://github.com/flimamacedo/webCrawlerTwitterPython/blob/master/imgs/api2.PNG)
-![Image description](https://github.com/flimamacedo/webCrawlerTwitterPython/blob/master/imgs/api1.PNG)
+
+![Image description](https://github.com/flimamacedo/webCrawlerTwitterPython/blob/master/imgs/api1.png)
 
 ## c. Archiecture Documentation
 
@@ -127,4 +128,5 @@ Give webcrawlertwitter about a minute to initialize, then access the SARG web UI
 ## e. Logs prints(item 8) and three Dashboards(item 9)
 
 ![Image description](https://github.com/flimamacedo/webCrawlerTwitterPython/blob/master/imgs/dash1.png)
+
 ![Image description](https://github.com/flimamacedo/webCrawlerTwitterPython/blob/master/imgs/dash2.png)

@@ -112,11 +112,18 @@ $ docker-compose down -v
 
 ### Initial setup
 
-#### Setting up user SARG Admin
+#### SARG CONTAINER - Setting up user SARG Admin
 
 ```console
 $ sudo docker exec -it sarg sh
-python manage.py createsuperuser 
+$ python manage.py createsuperuser 
+```
+
+#### FILEBEAT CONTAINER - Enable modules for Nginx and setup templates on Kibana
+```console
+$ docker exec -it filebeat bash
+$ ./filebeat modules enable nginx
+$ ./filebeat setup -E setup.kibana.host=kibana:5601
 ```
 
 #### Injecting data

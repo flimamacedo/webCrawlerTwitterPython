@@ -129,7 +129,7 @@ $ ./filebeat setup -E setup.kibana.host=kibana:5601
 #### Injecting data
 
 Give webcrawlertwitter about a minute to initialize, then access the SARG web UI by hitting
-[http://localhost](http://localhost) with a web browser and use the credentials created previusly  to log in:
+[http://caseitau.fastsolutionsoncloud.com.br](http://caseitau.fastsolutionsoncloud.com.br) with a web browser and use the credentials created previusly  to log in:
 
 
 ## e. Logs prints(item 8) and three Dashboards(item 9)

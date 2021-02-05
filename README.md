@@ -134,6 +134,6 @@ Give webcrawlertwitter about a minute to initialize, then access the SARG web UI
 
 ## e. Logs prints(item 8) and three Dashboards(item 9)
 
-![Image description](https://github.com/flimamacedo/webCrawlerTwitterPython/blob/master/imgs/dash1.png)
+![Image description](https://github.com/flimamacedo/webCrawlerTwitterPython/blob/master/imgs/dash_p1.png)
 
-![Image description](https://github.com/flimamacedo/webCrawlerTwitterPython/blob/master/imgs/dash2.png)
+![Image description](https://github.com/flimamacedo/webCrawlerTwitterPython/blob/master/imgs/dash_p2.png)

@@ -89,10 +89,9 @@ By default, the stack exposes the following ports:
 Clone this repository onto the Docker host that will run the stack, then start services locally using Docker Compose:
 
 ```console
-$ git clone https://github.com/flimamacedo/webCrawlerTwitterPython.git
-$ cd webCrawlerTwitterPython
-$ docker-compose build
-$ docker-compose up
+git clone https://github.com/flimamacedo/webCrawlerTwitterPython.git
+cd webCrawlerTwitterPython
+docker-compose up
 ```
 You can also run all services in the background (detached mode) by adding the `-d` flag to the above command.
 
@@ -107,7 +106,7 @@ MySQL data is persisted inside a volume by default.
 In order to entirely shutdown the stack and remove all persisted data, use the following Docker Compose command:
 
 ```console
-$ docker-compose down -v
+docker-compose down -v
 ```
 
 ### Initial setup
@@ -115,15 +114,15 @@ $ docker-compose down -v
 #### SARG CONTAINER - Setting up user SARG Admin
 
 ```console
-$ sudo docker exec -it sarg sh
-$ python manage.py createsuperuser 
+docker exec -it sarg sh
+python manage.py createsuperuser 
 ```
 
 #### FILEBEAT CONTAINER - Enable modules for Nginx and setup templates on Kibana
 ```console
-$ docker exec -it filebeat bash
-$ ./filebeat modules enable nginx
-$ ./filebeat setup -E setup.kibana.host=kibana:5601
+docker exec -it filebeat bash
+./filebeat modules enable nginx
+./filebeat setup -E setup.kibana.host=kibana:5601
 ```
 
 #### Injecting data

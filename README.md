@@ -1,9 +1,9 @@
 ##  Web Crawler Twitter on Docker
 ##  URLs
 
-* API REST: http://caseitau.fastsolutionsoncloud.com.br/apiRest/tweets/</li>
-* SARG: http://caseitau.fastsolutionsoncloud.com.br</li>
-* Kibana: http://caseitau.fastsolutionsoncloud.com.br:5601</li>
+* [API REST](http://caseitau.fastsolutionsoncloud.com.br/apiRest/tweets/){:target="_blank"}
+* [SARG](http://caseitau.fastsolutionsoncloud.com.br){:target="_blank"}
+* [Kibana](http://caseitau.fastsolutionsoncloud.com.br:5601){:target="_blank"}
 
 
 ##  Authentication
@@ -62,8 +62,8 @@ Based on the official Docker images:
 
 #### Host setup
 
-* [Docker Engine](https://docs.docker.com/install/) 
-* [Docker Compose](https://docs.docker.com/compose/install/)
+* [Docker Engine](https://docs.docker.com/install/){:target="_blank"}
+* [Docker Compose](https://docs.docker.com/compose/install/){:target="_blank"}
 * 4 Gi of RAM
 * 2 vCPUs 
 

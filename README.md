@@ -1,9 +1,9 @@
 ##  Web Crawler Twitter on Docker
 ##  URLs
 
-* [API REST](http://caseitau.fastsolutionsoncloud.com.br/apiRest/tweets/){:target="_blank"}
-* [SARG](http://caseitau.fastsolutionsoncloud.com.br){:target="_blank"}
-* [Kibana](http://caseitau.fastsolutionsoncloud.com.br:5601){:target="_blank"}
+* [API REST](http://caseitau.fastsolutionsoncloud.com.br/apiRest/tweets)
+* [SARG](http://caseitau.fastsolutionsoncloud.com.br)
+* [Kibana](http://caseitau.fastsolutionsoncloud.com.br:5601)
 
 
 ##  Authentication

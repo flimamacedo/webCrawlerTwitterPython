@@ -81,20 +81,7 @@ services:
                   #        networks:
                   #                - production-network
                   #        depends_on:
-  filebeat:
-    build:
-      context: .
-      dockerfile: ./docker-imgs/filebeat.dockerfile
-    container_name: filebeat
-    volumes:
-        - ./logs_nginx:/logs_nginx
-    restart: always
-    
-    networks:
-      - production-network
-    depends_on:
-      - reverse-proxy
-                                
+                  #                - db                  
 networks:                
         production-network:
                 driver: bridge

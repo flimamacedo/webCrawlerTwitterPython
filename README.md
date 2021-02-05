@@ -71,10 +71,6 @@ By default, the stack exposes the following ports:
 * 3306: Mysql TCP
 * 80: Nginx HTTP
 
-#### Packages installed localy on host
-
-* filebeat
-
 #### Python Libraries
 
 * tweepy

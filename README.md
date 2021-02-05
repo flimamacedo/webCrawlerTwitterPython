@@ -122,8 +122,9 @@ python manage.py createsuperuser
 ```console
 docker exec -it filebeat bash
 ./filebeat modules enable nginx
-./filebeat setup -E --dashboards setup.kibana.host=kibana:5601
+./filebeat setup -E setup.kibana.host=kibana:5601
 ```
+Now you need to create the index through the Kibana.
 
 #### Injecting data
 

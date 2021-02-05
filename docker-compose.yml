@@ -82,8 +82,9 @@ services:
         ELK_VERSION: ${ELK_VERSION}
     volumes:
       - type: bind
-        source: /config/elasticsearch.yml
+        source: ./elasticsearch/config/elasticsearch.yml
         target: /usr/share/elasticsearch/config/elasticsearch.yml
+        read_only: true        
       # Use it to have a no ephemeral filesystem to your data 
       #- ./elasticsearch/data:/usr/share/elasticsearch/data
     ports:
@@ -146,7 +147,7 @@ services:
     build:
       context: filebeat/
       args:
-        ELK_VERSION: ${ELK_VERSION}
+        ELK_VERSION: 7.10.1
     volumes:
       - type: bind
         source: ./filebeat/config/filebeat.yml

@@ -62,8 +62,8 @@ Based on the official Docker images:
 
 #### Host setup
 
-* [Docker Engine](https://docs.docker.com/install/){:target="_blank"}
-* [Docker Compose](https://docs.docker.com/compose/install/){:target="_blank"}
+* [Docker Engine](https://docs.docker.com/install/)
+* [Docker Compose](https://docs.docker.com/compose/install/)
 * 4 Gi of RAM
 * 2 vCPUs 
 

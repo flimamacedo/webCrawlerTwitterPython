@@ -99,30 +99,30 @@ services:
     networks:
       - case-itau
 
-  logstash:
-    container_name: logstash
-    build:
-      context: logstash/
-      args:
-        ELK_VERSION: ${ELK_VERSION}
-    volumes:
-      - type: bind
-        source: ./logstash/config/logstash.yml
-        target: /usr/share/logstash/config/logstash.yml
-        read_only: true
-      - type: bind
-        source: ./logstash/pipeline
-        target: /usr/share/logstash/pipeline
-        read_only: true
-    ports:
-      - "5000:5000"
-      - "9600:9600"
-    environment:
-      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
-    networks:
-      - case-itau
-    depends_on:
-      - elasticsearch
+  #logstash:
+  #  container_name: logstash
+  #  build:
+  #    context: logstash/
+  #    args:
+  #      ELK_VERSION: ${ELK_VERSION}
+  #  volumes:
+  #    - type: bind
+  #      source: ./logstash/config/logstash.yml
+  #      target: /usr/share/logstash/config/logstash.yml
+  #      read_only: true
+  #    - type: bind
+  #      source: ./logstash/pipeline
+  #      target: /usr/share/logstash/pipeline
+  #      read_only: true
+  #  ports:
+  #    - "5000:5000"
+  #    - "9600:9600"
+  #  environment:
+  #    LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+  #  networks:
+  #    - case-itau
+  #  depends_on:
+  #    - elasticsearch
 
   kibana:
     container_name: kibana

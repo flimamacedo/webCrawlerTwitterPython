@@ -64,7 +64,7 @@ Based on the official Docker images:
 
 * [Docker Engine](https://docs.docker.com/install/) 
 * [Docker Compose](https://docs.docker.com/compose/install/)
-* 2 Gi of RAM
+* 4 Gi of RAM
 * 2 vCPUs 
 
 By default, the stack exposes the following ports:

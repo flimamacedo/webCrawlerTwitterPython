@@ -2,86 +2,174 @@ version: '3'
 
 services:
 
-  webcrawlertwitter:
+  db:
+    image: mysql:5.7
+    command: --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    command: --event-scheduler=ON
+    container_name: db
+    # Use it to have a filesytem not ephemeral
+    #volumes:
+    #  - ./db_data:/var/lib/mysql
+    environment:  
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sarg
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306"
+    networks:
+      - case-itau
+    restart: always        
+
+  sarg-backend:
     build:
       context: .
-      dockerfile: ./docker-imgs/webCrawlerTwitter.dockerfile
+      dockerfile: ./sarg/Dockerfile
+    container_name: sarg
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && gunicorn sarg.wsgi -b 0.0.0.0:80"
+    volumes:
+      - ./sarg/app:/sarg
+      - ./sarg/app/media/media/:/media/media
+    ports:
+      - "80"
+    networks:
+      - case-itau
+    restart: always
+    depends_on:
+      - db    
+
+  web_crawler-backend:
+    container_name: web_crawler
+    build:
+      context: webCrawlerTwitter/
     container_name: webCrawlerTwitter
     restart: always
-    
+    environment:
+      CONSUMER_KEY: "xZIqCraA06CYEzFqNOpubn1Ua"
+      CONSUMER_SECRET: "oq0QJShtqXDPIBJi9i0qpySlaBPHu3VI5OpQAajtZ9OuZlr7Vo"
+      ACCESS_TOKEN: "1226685332294393856-PjDlFNhoFvg4nGoNb3JhxCrWSSA5Kf"
+      ACCESS_TOKEN_SECRET: "PzJPrtn7kxMnNj6GBVwtIbbxNYVS500ZNmnkkdFsrJakL"
+      HOST: "db"
+      USER: "root"
+      PASSWD: "root"
+      DATABASE: "sarg"          
     networks:
-      - production-network
+      - case-itau
     depends_on:
-      - db
+      - sarg-backend
+  
+  reverse_proxy-frontend:
+    image: nginx:1.15.2
+    container_name: nginx
+    volumes:
+      - ./sarg/app:/sarg
+      - ./nginx/logs:/var/log/nginx
+      - ./nginx/etc/nginx/conf.d:/etc/nginx/conf.d
+      - ./sarg/app/sarg/static:/static
+    ports:
+      - "80:80"
+    networks:
+      - case-itau
+    restart: always
+    depends_on:
+      - sarg-backend
 
-  db:
-        image: mysql:5.7
-        command: --character-set-server=utf8 --collation-server=utf8_unicode_ci
-        command: --event-scheduler=ON
-        container_name: mysql
-        #volumes:
-        #        - ./db_data:/var/lib/mysql
-        environment:
-                MYSQL_ROOT_PASSWORD: root
-                MYSQL_DATABASE: sarg
-                MYSQL_USER: root
-                MYSQL_PASSWORD: root
-        ports:
-                - "3306"
-        networks:
-                - production-network
-        restart: always
-  web:
-        build:
-                context: .
-                dockerfile: ./docker-imgs/sarg.dockerfile
-        container_name: sarg
-        command: bash -c "python manage.py makemigrations && python manage.py migrate && gunicorn sarg.wsgi -b 0.0.0.0:80"
-        volumes:
-                - ./sarg:/sarg
-                - ./sarg/media/media/:/media/media
-        expose:
-                - "80"
-        networks:
-                - production-network
-        restart: always
-        depends_on:
-                - db
-  reverse-proxy:
-        image: nginx:1.15.2
-        container_name: nginx
-        volumes:
-                - ./sarg:/sarg
-                - ./logs_nginx:/var/log/nginx
-                - ./conf/nginx/etc/nginx/conf.d:/etc/nginx/conf.d
-                - ./sarg/sarg/static:/static
-        ports:
-                - "80:80"
-        networks:
-                - production-network
-        restart: always
-        depends_on:
-                - web
-                  #  logstash:
-                  #        build:
-                  #                context: .
-                  #                dockerfile: ./docker-imgs/logstash.dockerfile
-                  #        container_name: logstash
-                  #        volumes:
-                  #                - ./conf/logstash/conf/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
-                  #                - ./conf/logstash/conf/pipelines.yml:/usr/share/logstash/config/pipelines.yml:ro
-                  #                - ./conf/logstash/pipeline:/usr/share/logstash/pipeline:ro
-                  #                - ./conf/logstash/driver/sqljdbc_6.0/enu/jre8:/etc/logstash/driver/sqljdbc_6.0/enu/jre8
-                  #                - ./conf/logstash/driver/mysql-connector-java-5.1.36:/etc/logstash/driver/mysql-connector-java-5.1.36
-                  #                - ./logstash_data:/log
-                  #        ports:
-                  #                - "5000:5000"
-                  #        environment:
-                  #                LS_JAVA_OPTS: "-Xmx1024m -Xms1024m"
-                  #        networks:
-                  #                - production-network
-                  #        depends_on:
-                  #                - db                  
-networks:                
-        production-network:
-                driver: bridge
+  elasticsearch:
+    container_name: elasticsearch
+    build:
+      context: elasticsearch/
+      args:
+        ELK_VERSION: 7.10.2
+    volumes:
+      - type: bind
+        source: ./elasticsearch/config/elasticsearch.yml
+        target: /usr/share/elasticsearch/config/elasticsearch.yml    
+      # - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      ELASTIC_PASSWORD: changeme
+      # Use single node discovery in order to disable production mode and avoid bootstrap checks
+      # see https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
+      discovery.type: single-node
+    networks:
+      - case-itau
+
+  logstash:
+    container_name: logstash
+    build:
+      context: logstash/
+      args:
+        ELK_VERSION: 7.10.2
+    volumes:
+      - type: bind
+        source: ./logstash/config/logstash.yml
+        target: /usr/share/logstash/config/logstash.yml
+        read_only: true
+      - type: bind
+        source: ./logstash/pipeline
+        target: /usr/share/logstash/pipeline
+        read_only: true
+    ports:
+      - "5000:5000"
+      - "9600:9600"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - case-itau
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    container_name: kibana
+    build:
+      context: kibana/
+      args:
+        ELK_VERSION: 7.10.2
+    volumes:
+      - type: bind
+        source: ./kibana/config/kibana.yml
+        target: /usr/share/kibana/config/kibana.yml
+        read_only: true
+    ports:
+      - "5601:5601"
+    networks:
+      - case-itau
+    depends_on:
+      - elasticsearch
+
+  filebeat:
+    container_name: filebeat
+    build:
+      context: filebeat/
+      args:
+        ELK_VERSION: 7.10.1
+    volumes:
+      - ./nginx/logs:/var/log/nginx      
+    restart: always
+    networks:
+      - case-itau
+    depends_on:
+      - elasticsearch 
+      
+  metricbeat:
+    container_name: metricbeat
+    build:
+      context: metricbeat/
+      args:
+        ELK_VERSION: 7.10.1
+    volumes:
+      - ./nginx/logs:/var/log/nginx      
+    restart: always
+    networks:
+      - case-itau
+    depends_on:
+      - elasticsearch      
+
+networks:
+  case-itau:
+    driver: bridge
+              

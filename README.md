@@ -26,7 +26,7 @@
 ## c. Archiecture Documentation
 
 Obs.:V1
-![Image description](https://github.com/flimamacedo/webCrawlerTwitterPython/blob/master/imgs/architecture.png)
+![Image description](https://github.com/flimamacedo/webCrawlerTwitterPython/blob/master/imgs/architectureCaseItau.png)
 
 ## d. Steps to run this project locally</h2>
 

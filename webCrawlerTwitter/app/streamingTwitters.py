@@ -3,19 +3,21 @@ import tweepy
 import json
 #import MySQLdb 
 import mysql.connector
+import os
 from dateutil import parser
- 
+
+
+CONSUMER_KEY = os.environ['CONSUMER_KEY']
+CONSUMER_SECRET = os.environ['CONSUMER_SECRET']
+ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
+ACCESS_TOKEN_SECRET = os.environ['ACCESS_TOKEN_SECRET']
+
+HOST = os.environ['HOST']
+USER = os.environ['USER']
+PASSWD = os.environ['PASSWD']
+DATABASE = os.environ['DATABASE']
+
 WORDS = ["#openbanking", "#apifirst", "#devops", "#cloudfirst", "#microservices", "#apigateway", "#oauth", "#swagger", "#raml", "#openapis"]
- 
-CONSUMER_KEY = "xZIqCraA06CYEzFqNOpubn1Ua"
-CONSUMER_SECRET = "oq0QJShtqXDPIBJi9i0qpySlaBPHu3VI5OpQAajtZ9OuZlr7Vo"
-ACCESS_TOKEN = "1226685332294393856-PjDlFNhoFvg4nGoNb3JhxCrWSSA5Kf"
-ACCESS_TOKEN_SECRET = "PzJPrtn7kxMnNj6GBVwtIbbxNYVS500ZNmnkkdFsrJakL"
- 
-HOST = "db"
-USER = "root"
-PASSWD = "root"
-DATABASE = "sarg"
  
 # This function takes the 'created_at', 'text', 'screen_name' and 'tweet_id' and stores it
 # into a MySQL database

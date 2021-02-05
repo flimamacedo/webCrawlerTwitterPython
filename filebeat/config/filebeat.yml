@@ -22,6 +22,6 @@ setup.template:
   name: 'filebeat'
   pattern: 'filebeat-*'
   enabled: true    
-  output.elasticsearch.username: "elastic"
-  output.elasticsearch.password: "changeme"
+  output.elasticsearch.username: ${ELASTICSEARCH_USER}
+  output.elasticsearch.password: ${ELASTICSEARCH_PASSWD}
   

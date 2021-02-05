@@ -129,8 +129,10 @@ Now you need to create the index through the Kibana.
 #### Injecting data
 
 Give webcrawlertwitter about a minute to initialize, then access the SARG web UI by hitting
-[http://caseitau.fastsolutionsoncloud.com.br](http://caseitau.fastsolutionsoncloud.com.br) with a web browser and use the credentials created previusly  to log in:
+[http://caseitau.fastsolutionsoncloud.com.br](http://caseitau.fastsolutionsoncloud.com.br) with a web browser and use the credentials created previusly  to log in. The default access for the running case is:
 
+* User: admin
+* Password: admin
 
 ## e. Logs prints(item 8) and three Dashboards(item 9)
 

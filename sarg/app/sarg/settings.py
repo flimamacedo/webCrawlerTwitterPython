@@ -136,7 +136,7 @@ USE_TZ = True
 STATIC_ROOT = '/sarg/sarg/static/'
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '/media/media')
 MEDIA_URL = '/media/' 
 
 USE_THOUSAND_SEPARATOR = True

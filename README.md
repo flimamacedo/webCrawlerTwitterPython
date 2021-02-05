@@ -26,7 +26,7 @@
 ## c. Archiecture Documentation
 
 Obs.:V1
-![Image description](http://caseitau.fastsolutionsoncloud.com.br/media/media/image005.png)
+![Image description](https://github.com/flimamacedo/webCrawlerTwitterPython/blob/master/imgs/architecture.png)
 
 ## d. Steps to run this project locally</h2>
 

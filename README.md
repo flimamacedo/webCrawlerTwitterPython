@@ -35,6 +35,9 @@ Based on the official Docker images:
 * [Nginx](https://hub.docker.com/_/nginx)
 * [MySQL](https://hub.docker.com/_/mysql)
 * [Python](https://hub.docker.com/_/python)
+* [Filebeat](https://www.elastic.co/guide/en/beats/filebeat/current/running-on-docker.html
+* [Elastic Search](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html)
+* [Kibana](https://www.elastic.co/guide/en/kibana/current/docker.html)
 
 
 ### Contents
@@ -42,7 +45,6 @@ Based on the official Docker images:
 1. [Requirements](#requirements)
    * [Twitter](#twitter)
    * [Host setup](#host-setup)
-   * [Packages installed localy on host](#packages-installed-localy-on-host)
    * [Python Libraries](#python-libraries)   
    
 2. [Usage](#usage)
@@ -68,7 +70,6 @@ Based on the official Docker images:
 * 2 vCPUs 
 
 By default, the stack exposes the following ports:
-* 3306: Mysql TCP
 * 80: Nginx HTTP
 
 #### Python Libraries

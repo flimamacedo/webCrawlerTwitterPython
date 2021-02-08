@@ -88,8 +88,8 @@ services:
       # Use it to have a no ephemeral filesystem to your data 
       #- ./elasticsearch/data:/usr/share/elasticsearch/data
     ports:
-      - "9200:9200"
-      - "9300:9300"
+      - "9200"
+      - "9300"
     environment:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
       ELASTIC_PASSWORD: changeme
